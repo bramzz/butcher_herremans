@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153536468-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-153536468-2');
+    </script>
+
+    <meta charset="UTF-8">
+    <title>Slagerij Herremans</title>
+    <link href="index.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+    <!-- Latest compiled and minified bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Leaflet styles -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+        integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+        crossorigin="" />
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <!-- Leaflet scripts -->
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+        integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+        crossorigin=""></script>
+    <script src="scripts/map.js"></script>
+
+    <!-- Scripts -->
+    <script src="scripts/scroll.js"></script>
+</head>
+
+<body>
+    <nav>
+        <img class="hamburger-menu" src="assets/icons/hamburger-menu.png" alt="Open menu" title="Open menu">
+        <ul class="left">
+            <li><a href="" class="active">Homepage</a></li>
+            <li>•</li>
+            <li><a href="assortiment">Assortiment</a></li>
+            <li>•</li>
+            <li><a href="bbq">BBQ</a></li>
+        </ul>
+        <div class="middle">
+        </div>
+        <ul class="right">
+            <li><a href="wiezijnwij">Wie zijn wij</a></li>
+            <li>•</li>
+            <li><a target="_blank" href="/assets/kerstfolder.pdf">Kerstfolder</a></li>
+            <li>•</li>
+            <li><a href="contact">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="banner">
+        <div class="logo-wrapper">
+            <img src="./assets/images/Logo_white.png" alt="Logo">
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 200 100"
+            preserveAspectRatio="none" id="banner-svg">
+            <path d="M0 0 L0 100 L100 100 Z" />
+            <path d="M200 0 L100 100 L200 100 Z" />
+        </svg>
+    </div>
+
+    <div class="intro">
+        <div class="row">
+            <div class="animated zoomIn col-xs-12 col-sm-4">
+                <div class="col-12">
+                    <div class="circular-image">
+                        <img src="assets/images/Broodjes.PNG" alt="Broodjes" title="Broodjes">
+                    </div>
+                    <p class="circular-image-text sub-text">Wij verkopen ook heerlijke broodjes. Bekijk <a
+                            target="_blank" href="assets/broodjesfolder.pdf">hier</a> ons aanbod.</p>
+                    <br>
+                    <div class="circular-image">
+                        <img src="assets/images/Kerst.jpg" alt="Kerstfolder" title="Kerstfolder">
+                    </div>
+                    <p class="circular-image-text sub-text">Neem een kijkje in onze kerstfolder. Bekijk <a
+                            target="_blank" href="assets/kerstfolder.pdf">hier</a> ons aanbod.</p>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <video id="promo-vid" autoplay muted controls>
+                    <source src="assets/videos/promo.mp4" type="video/mp4">
+                    Your browser does not support HTML5 video.
+                </video>
+            </div>
+            <div class="col-sm-2">
+                <div class="text-block">
+                    <p class="to-bottom sub-text">"Authenticiteit en kwaliteit zijn 2 belangrijke pijlers die wij
+                        vooropstellen in onze slagerij. Naast een uitgebreid assortiment van kwaliteitsvol vlees, bieden
+                        wij ook heel wat verse zelfbereide producten aan."</p>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="social-media-right">
+                    <a target="_blank" href="https://www.facebook.com/SlagerijHerremans/"><img
+                            class="animated slideInRight social-media-circle" src="assets/images/facebook.png"
+                            alt="Facebook"></a>
+                    <br>
+                    <a target="_blank" href="https://www.instagram.com/slagerijherremans/"><img
+                            class="animated slideInRight social-media-circle" src="assets/images/instagram.png"
+                            alt="Instagram" title="Instagram"></a>
+                    <br>
+                    <a href="mailto:herremans.wemmel@gmail.com" target="_blank"><img
+                            class="animated slideInRight social-media-circle" src="assets/images/email.png" alt="Email"
+                            title="Email"></a>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div id="scroll-down-arrow">
+                    <p class="sub-text">Neem een kijkje in de slagerij</p>
+                    <img class="animated infinite rubberBand" src="assets/images/continue-arrow.png" alt="Continue">
+                </div>
+            </div>
+        </div>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 100"
+        preserveAspectRatio="none" id="section-1-svg">
+        <path d="M100 0 L0 100 L100 100 Z" />
+    </svg>
+    <div id="section-1">
+        <div class="container">
+            <h1 class="center">Ambachtelijke kwaliteit</h1>
+            <div class="row">
+                <div class="col-md-9 col-sm-12">
+                    <ul class="image-gallery">
+                        <li>
+                            <a target="_blank" href="assets/images/album/album-1.jpg">
+                                <img src="assets/images/album/album-1.jpg" alt="Gallery image 1" />
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="assets/images/album/album-2.jpg">
+                                <img src="assets/images/album/album-2.jpg" alt="Gallery image 2" />
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="assets/images/album/album-3.jpg">
+                                <img src="assets/images/album/album-3.jpg" alt="Gallery image 3" />
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="assets/images/album/album-4.jpg">
+                                <img src="assets/images/album/album-4.jpg" alt="Gallery image 4" />
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="assets/images/album/album-5.jpg">
+                                <img src="assets/images/album/album-5.jpg" alt="Gallery image 5" />
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="assets/images/album/album-6.jpg">
+                                <img src="assets/images/album/album-6.jpg" alt="Gallery image 6" />
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="assets/images/album/album-7.jpg">
+                                <img src="assets/images/album/album-7.jpg" alt="Gallery image 7" />
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="assets/images/album/album-8.jpg">
+                                <img src="assets/images/album/album-8.jpg" alt="Gallery image 8" />
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="assets/images/album/album-9.jpg">
+                                <img src="assets/images/album/album-9.jpg" alt="Gallery image 9" />
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="assets/images/album/album-10.jpg">
+                                <img src="assets/images/album/album-10.jpg" alt="Gallery image 10" />
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="assets/images/album/album-11.jpg">
+                                <img src="assets/images/album/album-11.jpg" alt="Gallery image 11" />
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="assets/images/album/album-12.jpg">
+                                <img src="assets/images/album/album-12.jpg" alt="Gallery image 12" />
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="assets/images/album/album-13.jpg">
+                                <img src="assets/images/album/album-13.jpg" alt="Gallery image 13" />
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="assets/images/album/album-14.jpg">
+                                <img src="assets/images/album/album-14.jpg" alt="Gallery image 14" />
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="assets/images/album/album-15.jpg">
+                                <img src="assets/images/album/album-15.jpg" alt="Gallery image 15" />
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="assets/images/album/album-16.jpg">
+                                <img src="assets/images/album/album-16.jpg" alt="Gallery image 16" />
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-12">
+                    <img id="generaties" src="assets/images/generaties.jpg" alt="4 generaties">
+                    <h2 class="center">Al 4 generaties lang</h2>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3 class="align-center">Culinaire slagerij</h3>
+                    <h3 class="align-center">Bij ons staat ambachtelijkheid centraal</h3>
+                    <h3 class="align-center">Sinds 1920</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="150" viewBox="0 0 100 200"
+        preserveAspectRatio="none" id="section-1-svg">
+        <path d="M0 0 L100 200 L100 0 Z" />
+    </svg>
+    <div id="section-2">
+        <div class="container">
+            <div class="row reviews">
+                <div class="col-xs-12">
+                    <h1 class="pull-left">Wat zeggen onze klanten</h1>
+                </div>
+                <div class="col-lg-6 col-xs-12">
+                    <iframe
+                        src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fmaarten.willems.5%2Fposts%2F1592259114189615%3A0&width=500"
+                        width="500" height="280" class="fb-review" scrolling="no" frameborder="0"
+                        allowTransparency="true" allow="encrypted-media"></iframe>
+                </div>
+                <div class="col-lg-6 col-xs-12">
+                    <iframe
+                        src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D1852957445010069%26id%3D100008874932845%26substory_index%3D0&width=500"
+                        width="500" height="280" frameborder="0" allowTransparency="true"
+                        allow="encrypted-media"></iframe>
+                </div>
+                <div class="col-lg-6 col-xs-12">
+                    <iframe
+                        src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Farlette.deridder.35%2Fposts%2F10157285227203625%3A0&width=500"
+                        width="500" height="337" scrolling="no" frameborder="0" allowTransparency="true"
+                        allow="encrypted-media"></iframe>
+                </div>
+                <div class="col-lg-6 col-xs-12">
+                    <iframe
+                        src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpatricia.devito.35%2Fposts%2F10156760650401756%3A0&width=500"
+                        width="500" height="337" scrolling="no" frameborder="0" allowTransparency="true"
+                        allow="encrypted-media"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="section-3">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="80" viewBox="0 0 100 200"
+            preserveAspectRatio="none" id="section-2-svg">
+            <path d="M0 0 L100 200 L100 0 Z" />
+        </svg>
+    </div>
+    <div id="section-4">
+        <div class="container">
+            <h1 class="center">Aanbod</h1>
+            <a href="assortiment" class="assortiment">
+                <ul class="meat-kinds">
+                    <li>
+                        <div class="meat-kind-wrap">
+                            <img src="assets/images/cow.png" alt="Vlees">
+                            <span>Vers Vlees</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="meat-kind-wrap">
+                            <img src="assets/images/plate.png" alt="Bereide Gerechten">
+                            <span>Bereide Gerechten</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="meat-kind-wrap">
+                            <img src="assets/images/cheese.png" alt="Kazen">
+                            <span>Kazen</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="meat-kind-wrap">
+                            <img src="assets/images/bread.png" alt="Broodjes">
+                            <span>Broodjes</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="meat-kind-wrap">
+                            <img src="assets/images/dry_aged.png" alt="Dry Aged">
+                            <span>Dry Aged</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="meat-kind-wrap" data-slider="snacks">
+                            <img src="assets/images/homemade.png" alt="">
+                            <span>Huisbereide Charcuterie</span>
+                        </div>
+                    </li>
+                </ul>
+            </a>
+        </div>
+        <!-- <div class="row">
+            <div class="col-md-8 col-xs-11 center-block">
+                <div class="row">
+                    <div class="col-12">
+                        <p>Eee</p>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+    <div id="map"></div>
+    <footer>
+        <div class="sitemap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7 col-xs-12">
+                    </div>
+                    <div class="col-md-4 col-xs-12 footer-info">
+                        <div class="row footer-info-right">
+                            <div class="col-xs-12">
+                                <h3>Openingsuren</h3>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <i>Maandag</i>
+                                        <p>08:00 - 19:00</p>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <i>Dinsdag</i>
+                                        <p>08:00 - 19:00</p>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <i>Woensdag</i>
+                                        <p>08:00 - 19:00</p>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <i>Donderdag</i>
+                                        <p>08:00 - 19:00</p>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <i>Vrijdag</i>
+                                        <p>08:00 - 19:00</p>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <i>Zaterdag</i>
+                                        <p>08:30 - 17:00</p>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <i>Zondag</i>
+                                        <p>GESLOTEN</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <h3>Contacteer ons</h3>
+                                <div class="row footer-info-contact">
+                                    <div class="col-xs-12">
+                                        <i>Cdt. J. De Blockplein 17</i>
+                                        <i>1780 Wemmel</i>
+                                        <i>BE0735494877</i>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <b>
+                                            <a href="tel:02 460 48 76" rel="nofollow">02 460 48 76</a>
+                                        </b>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <i>
+                                            <a href="mailto:herremans.wemmel@gmail.com">herremans.wemmel@gmail.com</a>
+                                        </i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

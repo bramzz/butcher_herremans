@@ -1,0 +1,556 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+@font-face {
+    font-family: 'AlternateGothic2 BT';
+    src: url('assets/fonts//AlternateGothic2BT/AlternateGothic2BT.ttf');
+}
+
+/* General */
+body,
+html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    font-family: 'Roboto', sans-serif !important;
+}
+
+.row {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row>[class*='col-'] {
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, p.sub-text {
+    font-family: 'AlternateGothic2 BT' !important
+}
+
+h1 {
+    font-size: 5em !important;
+}
+
+.center {
+    text-align: center;
+}
+
+.text-block {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.to-bottom {
+    position: absolute;
+    bottom: 0px;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.col-xs-0, 
+.col-sm-0,
+.col-md-0,
+.col-lg-0 {
+    flex: 0 0 0;
+    max-width: 0;
+}
+
+svg:not(:root) {
+    overflow: auto !important;
+}
+
+/* Nav + banner picture */
+nav {
+    font-family: 'Roboto', sans-serif;
+    display: block;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    height: 5em;
+    color: white;
+    background-color: black;
+    background: linear-gradient(#000000, #000000d5, #000000c4, #00000000);
+    z-index: 2;
+}
+
+nav ul {
+    float: left;
+    width: 33.33%;
+    list-style: none;
+    font-size: 1.2em;
+    padding: 0;
+    text-align: center;
+    margin-top: .5em;
+}
+
+nav div.middle {
+    float: left;
+    width: 33.33%;
+    padding: 0;
+    height: 100%;
+}
+
+div.logo-wrapper {
+    position: absolute;
+    left: 33.33%;
+    top: 0px;
+    width: 33.33%;
+    margin: auto;
+    background: linear-gradient(#000000, #000000ee, #000000d3, #0000009d);
+    height: 100%;
+}
+
+nav ul li {
+    display: inline-block;
+    padding: 10px 1.5em;
+}
+
+nav ul li:nth-of-type(even) {
+    padding: 5px 0em;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    transition: all .2s ease-in-out;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    text-decoration: none;
+    outline: none;
+    color: red;
+    border-bottom: 3px solid red;
+}
+
+.banner {
+    position: relative;
+    background-image: url('./assets/images/background-image.jpg');
+    height: 40%;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 2em;
+}
+
+.logo-wrapper {
+    text-align: center;
+    z-index: 2;
+}
+
+.logo-wrapper>img {
+    max-width: 98%;
+    max-height: calc(100% - 100px);
+    width: auto;
+    height: auto;
+    z-index: 21;
+    margin-top: 4em;
+}
+
+.banner>svg {
+    width: 100%;
+}
+
+
+svg#banner-svg {
+    pointer-events: none;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    z-index: 3;
+}
+
+svg#banner-svg path {
+    fill: white;
+    stroke: white;
+}
+
+img.hamburger-menu {
+    display: none;
+    float: left;
+    height: 4em;
+    margin-left: 1em;
+    margin-top: 10px;
+}
+
+/* Intro */
+.intro > .row {
+    margin: 0;
+}
+
+video#promo-vid {
+    width: 100%;
+    border: 3px solid black;
+    border-radius: 10px;
+    background-color: black;
+}
+
+.circular-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    left: calc(50% - 75px);
+    border: 3px solid black;
+    box-shadow: 0px 5px 8px;
+}
+
+.circular-image-text {
+    margin-top: 1em;
+    text-align: center;
+    font-size: 1.4em;
+}
+
+.circular-image img {
+    min-width: 150px;
+    min-height: 150px;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.social-media-right {
+    z-index: 3;
+    position: absolute;
+    right: 20px;
+    top: -4em;
+}
+
+.social-media-circle {
+    width: 4em;
+    height: 4em;
+    margin-bottom: .5em;
+    animation-duration: 1s !important; 
+}
+
+#scroll-down-arrow {
+    margin-top: 2em;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+#scroll-down-arrow img {
+    cursor: pointer;
+    width: 3em;
+    animation-duration: 3s !important;
+}
+
+
+/* Section 1 */
+#section-1 {
+    background-color: black;
+    color: white;
+    padding-top: 2em;
+    padding-bottom: 8em;
+}
+
+svg#section-1-svg {
+    pointer-events: none;
+    display: block;
+}
+
+svg#section-1-svg path {
+    fill: black;
+    stroke: black;
+}
+
+.image-gallery {
+    overflow: hidden;
+    width: 100%;
+    color: black;
+}
+
+.image-gallery li {
+    float: left;
+    width: calc(20%);
+    position: relative;
+    padding: 1px;
+    margin: 5px;
+    min-height: 100px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    overflow: hidden;
+
+    border: 7px solid white;
+}
+
+.image-gallery li img{
+    width: 100%; 
+    height: 10em;
+}
+
+img#generaties {
+    display: block;
+    width: 100%;
+}
+
+/* Section 2 */
+svg#section-2-svg {
+    fill: white;
+    stroke: white;
+}
+
+/* Section 3 */
+#section-3 {
+    background-color: black;
+}
+
+/* Section 4 */
+#section-4 {
+    color: white;
+    background-color: black;
+    padding: .5em 0;
+}
+
+#section-4 .meat-kinds {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+    margin-top: 65px;
+    margin-bottom: 65px;
+}
+
+#section-4 .meat-kinds li {
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+}
+
+#section-4 .meat-kinds li .meat-kind-wrap {
+    color: #fefcfc;
+    padding: 5px 22px;
+    text-align: center;
+    display: block;
+    cursor: pointer;
+}
+
+#section-4 li .meat-kind-wrap img {
+    display: block;
+    margin: 0 auto 15px;
+}
+
+#section-4 a.assortiment {
+    text-decoration: none;
+}
+
+
+/* Leaflet map */
+#map {
+    height: 40%;
+    width: 100%;
+}
+
+/* Footer */
+footer {
+    min-height: 450px;
+    width: 100%;
+    background-color: black;
+}
+
+footer > div.row {
+    height: 100%;
+    margin: 0;
+}
+
+.footer-info {
+    background-color: white;
+}
+
+.footer-info-right {
+    padding: 1em;
+}
+
+.footer-info-contact > div {
+    margin: .3em 0;
+}
+
+/* BBQ Assortiment */
+
+img.bbq-img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+}
+
+h3.assortiment-subtitle {
+    text-decoration: underline;
+    margin-bottom: 1em;
+    margin-top: 2em;
+}
+
+ul.assortiment-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+/* Wie zijn wij */
+.wiezijnwij {
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+/* Contact */
+.contact {
+    text-align: center;
+    font-size: 2em;
+}
+
+/* Media queries */
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+/* Styles */
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen 
+and (min-width : 321px) {
+/* Styles */
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen 
+and (max-width : 767px) {
+    .to-bottom {
+        position: initial;
+    }
+
+    .social-media-right {
+        display: none;
+    }
+
+    .image-gallery li img{
+        width: 100%; 
+        height: 7em;
+    }
+
+    img#generaties {
+        padding: 5%;
+    }
+
+    .image-gallery li {
+        width: calc(30%);
+    }
+}
+
+
+/* Everything smaller than a laptop */
+@media only screen and (max-width: 1315px) {
+    img.hamburger-menu {
+        display: inline;
+    }
+
+    nav {
+        height: 7em;
+    }
+
+    nav ul {
+        display: none;
+    }
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1023px) {
+    #generaties {
+        max-width: 50% !important; 
+    }
+}
+
+@media only screen and (max-device-width: 1439px) {
+    .reviews {
+        text-align: center;
+    }
+    
+    .reviews iframe {
+        display: block;
+        margin: auto;
+        min-height: 100%;
+        margin-bottom: .5em;
+        border: none;
+        overflow: hidden;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    nav ul {
+        font-size: .9em;
+    }
+}
+
+/* Large mobiles ----------- */
+@media only screen
+and (max-width: 768px) {
+    div.banner {
+        height: 30%;
+    }
+
+    div.logo-wrapper {
+        width: 50%;
+        left: 25%;
+    }
+
+    .site-map {
+        display: none !important;
+    }
+
+    .image-gallery li {
+        /* width: calc(40%); */
+    }
+}
+
+/* iPads (landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) {
+    
+}
+
+/* iPads (portrait) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) {
+/* Styles */
+}
+
+/* Desktops and laptops ----------- */
+@media only screen 
+and (min-width : 1224px) {
+/* Styles */
+}
+
+/* Large screens ----------- */
+@media only screen 
+and (min-width : 1824px) {
+/* Styles */
+}
+
+/* iPhone 4 ----------- */
+@media
+only screen and (-webkit-min-device-pixel-ratio : 1.5),
+only screen and (min-device-pixel-ratio : 1.5) {
+/* Styles */
+}
