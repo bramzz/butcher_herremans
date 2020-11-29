@@ -1,0 +1,5 @@
+#!/bin/sh            
+ cd /var/www/slagerijherremans.be/public_html 
+ git pull      
+ exit      
+EOF
