@@ -1,0 +1,36 @@
+---
+
+---
+
+<div class="relative">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <div id="map" class="w-full h-[400px] rounded-lg overflow-hidden shadow-sm"></div>
+</div>
+
+<script>
+  async function initMap() {
+    const L = await import('https://unpkg.com/leaflet@1.9.4/dist/leaflet-src.esm.js');
+    const map = L.map('map').setView([50.899780, 4.312670], 16);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      maxZoom: 19,
+    }).addTo(map);
+    L.marker([50.899780, 4.312670])
+      .addTo(map)
+      .bindPopup('<strong>Slagerij Herremans</strong><br>Cdt. J. De Blockplein 17<br>1780 Wemmel')
+      .openPopup();
+  }
+
+  // Lazy-init when map scrolls into view
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        initMap();
+        observer.disconnect();
+      }
+    });
+  }, { rootMargin: '200px' });
+
+  const mapEl = document.getElementById('map');
+  if (mapEl) observer.observe(mapEl);
+</script>

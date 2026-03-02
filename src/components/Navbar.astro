@@ -1,0 +1,152 @@
+---
+interface Props {
+  currentPage?: string;
+}
+
+const { currentPage = '' } = Astro.props;
+
+const navLinks = [
+  { href: '/', label: 'Home', id: 'home' },
+  { href: '/assortiment', label: 'Assortiment', id: 'assortiment' },
+  { href: '/bbq', label: 'BBQ', id: 'bbq' },
+  { href: '/wiezijnwij', label: 'Wie zijn wij', id: 'wiezijnwij' },
+  { href: '/contact', label: 'Contact', id: 'contact' },
+];
+---
+
+<header
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+  id="site-header"
+  data-transparent
+>
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+      <!-- Logo -->
+      <a href="/" class="flex-shrink-0 relative">
+        <img src="/images/Logo_white.png" alt="Slagerij Herremans" class="h-10 lg:h-14 w-auto transition-opacity duration-300" id="logo-white" />
+        <img src="/images/Logo_black.png" alt="Slagerij Herremans" class="h-10 lg:h-14 w-auto absolute inset-0 opacity-0 transition-opacity duration-300" id="logo-black" />
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center gap-8">
+        {navLinks.map(link => (
+          <a
+            href={link.href}
+            class:list={[
+              'nav-link text-sm font-medium tracking-widest uppercase transition-all duration-300 hover:text-brand-red',
+              currentPage === link.id ? 'text-brand-red' : 'text-white'
+            ]}
+          >
+            {link.label}
+            <span class:list={[
+              'block h-0.5 bg-brand-red transition-all duration-300 mt-0.5',
+              currentPage === link.id ? 'w-full' : 'w-0 group-hover:w-full'
+            ]} />
+          </a>
+        ))}
+        <a
+          href="https://webshop.slagerijherremans.be"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="ml-4 inline-flex items-center px-5 py-2.5 bg-brand-red text-white text-sm font-semibold tracking-wide uppercase hover:bg-brand-red-dark transition-all duration-300 hover:scale-105"
+        >
+          Bestel Online
+        </a>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button
+        id="mobile-menu-btn"
+        class="lg:hidden p-2 text-white transition-colors"
+        aria-label="Menu openen"
+        aria-expanded="false"
+      >
+        <svg id="hamburger-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="close-icon" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Drawer -->
+  <div id="mobile-menu" class="lg:hidden hidden bg-black/95 backdrop-blur-md border-t border-white/10">
+    <div class="px-6 py-8 space-y-5">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class:list={[
+            'block text-xl font-light tracking-wider uppercase transition-colors duration-200 hover:text-brand-red',
+            currentPage === link.id ? 'text-brand-red' : 'text-white'
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="https://webshop.slagerijherremans.be"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="block mt-6 text-center px-5 py-3.5 bg-brand-red text-white font-semibold tracking-wide uppercase hover:bg-brand-red-dark transition-colors"
+      >
+        Bestel Online
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const hamburger = document.getElementById('hamburger-icon');
+  const closeIcon = document.getElementById('close-icon');
+  const header = document.getElementById('site-header');
+  const logoWhite = document.getElementById('logo-white');
+  const logoBlack = document.getElementById('logo-black');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+
+  btn?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden');
+    hamburger?.classList.toggle('hidden');
+    closeIcon?.classList.toggle('hidden');
+    btn.setAttribute('aria-expanded', String(!isOpen));
+  });
+
+  function updateNav() {
+    const scrolled = window.scrollY > 80;
+    if (scrolled) {
+      header?.classList.add('bg-white', 'shadow-lg');
+      header?.classList.remove('bg-transparent');
+      logoWhite?.classList.add('opacity-0');
+      logoBlack?.classList.remove('opacity-0');
+      navLinks.forEach(l => {
+        if (!l.classList.contains('text-brand-red')) {
+          l.classList.remove('text-white');
+          l.classList.add('text-gray-900');
+        }
+      });
+      mobileBtn?.classList.remove('text-white');
+      mobileBtn?.classList.add('text-gray-900');
+    } else {
+      header?.classList.remove('bg-white', 'shadow-lg');
+      header?.classList.add('bg-transparent');
+      logoWhite?.classList.remove('opacity-0');
+      logoBlack?.classList.add('opacity-0');
+      navLinks.forEach(l => {
+        if (!l.classList.contains('text-brand-red')) {
+          l.classList.remove('text-gray-900');
+          l.classList.add('text-white');
+        }
+      });
+      mobileBtn?.classList.add('text-white');
+      mobileBtn?.classList.remove('text-gray-900');
+    }
+  }
+
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+</script>

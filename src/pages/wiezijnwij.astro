@@ -1,0 +1,107 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+---
+
+<Layout
+  title="Over ons | Slagerij Herremans Wemmel - Sinds 1920"
+  description="Slagerij Herremans: een familiebedrijf in Wemmel met liefde en passie voor de slagersambacht sinds 1920. Al vier generaties kiezen voor de korte keten tussen boer en slager."
+  currentPage="wiezijnwij"
+>
+  <Hero
+    title="Wie zijn wij"
+    subtitle="Al vier generaties een passie voor de slagersambacht"
+    image="/images/album/album-4.jpg"
+    compact
+  />
+
+  <section class="py-20 lg:py-28 bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Dutch text + generaties photo side by side -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-20">
+        <div class="reveal">
+          <span class="text-brand-red font-semibold tracking-widest uppercase text-sm">Ons verhaal</span>
+          <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mt-3 mb-8">
+            Een familiebedrijf met <span class="text-brand-red">passie</span>
+          </h2>
+          <div class="space-y-4 text-lg text-gray-600 leading-relaxed">
+            <p>
+              Culinaire Slagerij Herremans — een familiebedrijf met liefde en passie voor de
+              slagersambacht en dit sedert <strong class="text-gray-900">1920</strong>!
+            </p>
+            <p>
+              Tegenwoordig werken we met 2 generaties in onze recent vernieuwde winkel en atelier.
+              Zo beschikken we over een ruim aanbod aan bereide- en panklare gerechten, huisgemaakte
+              charcuterie en vers vlees (Belgisch Witblauw, Brasvar, ...).
+            </p>
+            <p>
+              Kiezen voor vlees van bij Herremans, is kiezen voor de korte keten tussen Boer en Slager...
+              <strong class="text-brand-red">Proef het verschil!</strong>
+            </p>
+          </div>
+        </div>
+        <div class="reveal">
+          <img
+            src="/images/generaties.jpg"
+            alt="Vier generaties Slagerij Herremans"
+            class="w-full rounded-lg shadow-2xl"
+            loading="lazy"
+          />
+          <p class="text-center text-sm text-gray-500 mt-4 tracking-wide">Vier generaties vakmanschap</p>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-20">
+        <div class="reveal text-center p-8 bg-black text-white">
+          <p class="text-5xl font-bold text-brand-red mb-2">1920</p>
+          <p class="text-sm tracking-widest uppercase text-gray-400">Opgericht</p>
+        </div>
+        <div class="reveal text-center p-8 bg-black text-white">
+          <p class="text-5xl font-bold text-brand-red mb-2">4</p>
+          <p class="text-sm tracking-widest uppercase text-gray-400">Generaties</p>
+        </div>
+        <div class="reveal text-center p-8 bg-black text-white">
+          <p class="text-5xl font-bold text-brand-red mb-2">100+</p>
+          <p class="text-sm tracking-widest uppercase text-gray-400">Jaar vakmanschap</p>
+        </div>
+      </div>
+
+      <!-- French -->
+      <div class="reveal max-w-3xl mx-auto">
+        <span class="text-gray-400 font-semibold tracking-widest uppercase text-sm">Notre histoire</span>
+        <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mt-3 mb-8">
+          Une entreprise <span class="text-brand-red">familiale</span>
+        </h2>
+        <div class="space-y-4 text-lg text-gray-600 leading-relaxed">
+          <p>
+            Boucherie Culinaire Herremans — une entreprise familiale qui travaille avec amour et
+            passion pour le métier de boucher depuis <strong class="text-gray-900">1920</strong>!
+          </p>
+          <p>
+            Actuellement nous travaillons avec 2 générations dans notre boucherie et atelier
+            récemment rénovés. Nous avons un large assortiment en plats préparés, des préparations
+            prêtes à cuire, de la charcuterie fait maison et de la viande (Blanc-Bleu Belge,
+            Brasvar, ...).
+          </p>
+          <p>
+            Choisir de la viande de chez Herremans, c'est choisir le trajet le plus court entre le
+            fermier et le boucher... <strong class="text-brand-red">Goûtez la différence!</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style is:global>
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  reveals.forEach(el => observer.observe(el));
+</script>

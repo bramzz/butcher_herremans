@@ -1,0 +1,119 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  image: string;
+  ctaText?: string;
+  ctaLink?: string;
+  compact?: boolean;
+}
+
+const { title, subtitle, image, ctaText, ctaLink, compact = false } = Astro.props;
+---
+
+<section
+  class:list={[
+    'relative bg-black flex items-end justify-center overflow-hidden',
+    compact ? 'min-h-[50vh]' : 'min-h-screen'
+  ]}
+>
+  <!-- Background with parallax-like scaling -->
+  <img
+    src={image}
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover scale-105"
+    loading="eager"
+    id="hero-bg"
+  />
+
+  <!-- Gradient overlay -->
+  <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/20"></div>
+
+  <!-- Content -->
+  <div class:list={[
+    'relative z-10 text-center px-4 max-w-5xl mx-auto w-full',
+    compact ? 'pb-16' : 'pb-24 lg:pb-32'
+  ]}>
+    <!-- Decorative line -->
+    <div class="w-12 h-0.5 bg-brand-red mx-auto mb-6 animate-fade-in"></div>
+
+    <h1 class:list={[
+      'font-bold text-white leading-none tracking-tight animate-slide-up',
+      compact ? 'text-4xl lg:text-6xl' : 'text-5xl md:text-7xl lg:text-8xl'
+    ]}>
+      {title}
+    </h1>
+
+    {subtitle && (
+      <p class="mt-6 text-lg lg:text-xl text-gray-300 max-w-2xl mx-auto font-light tracking-wide animate-slide-up-delay">
+        {subtitle}
+      </p>
+    )}
+
+    {ctaText && ctaLink && (
+      <a
+        href={ctaLink}
+        target={ctaLink.startsWith('http') ? '_blank' : undefined}
+        rel={ctaLink.startsWith('http') ? 'noopener noreferrer' : undefined}
+        class="mt-10 inline-flex items-center gap-3 px-8 py-4 bg-brand-red text-white font-semibold tracking-wide uppercase hover:bg-brand-red-dark transition-all duration-300 hover:scale-105 hover:gap-4 animate-slide-up-delay-2"
+      >
+        {ctaText}
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    )}
+  </div>
+
+  <!-- Scroll indicator (only on full hero) -->
+  {!compact && (
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+      <div class="w-6 h-10 border-2 border-white/40 rounded-full flex justify-center pt-2">
+        <div class="w-1 h-2.5 bg-white/80 rounded-full animate-scroll-dot"></div>
+      </div>
+    </div>
+  )}
+</section>
+
+<style>
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes scroll-dot {
+    0%, 100% { opacity: 1; transform: translateY(0); }
+    50% { opacity: 0.3; transform: translateY(8px); }
+  }
+  .animate-fade-in {
+    animation: fade-in 1s ease-out both;
+  }
+  .animate-slide-up {
+    animation: slide-up 0.8s ease-out 0.2s both;
+  }
+  .animate-slide-up-delay {
+    animation: slide-up 0.8s ease-out 0.5s both;
+  }
+  .animate-slide-up-delay-2 {
+    animation: slide-up 0.8s ease-out 0.8s both;
+  }
+  .animate-scroll-dot {
+    animation: scroll-dot 2s ease-in-out infinite;
+  }
+</style>
+
+<script>
+  // Subtle parallax on hero background
+  const heroBg = document.getElementById('hero-bg');
+  if (heroBg) {
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y < window.innerHeight) {
+        heroBg.style.transform = `scale(1.05) translateY(${y * 0.15}px)`;
+      }
+    }, { passive: true });
+  }
+</script>

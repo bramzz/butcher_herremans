@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+
+const categories = [
+  {
+    title: 'Vers Vlees',
+    icon: '/images/cow.png',
+    description: 'Kwaliteitsvol Belgisch Witblauw en Brasvar vlees, rechtstreeks van de boer. Wij staan garant voor de korte keten tussen boer en slager.',
+  },
+  {
+    title: 'Bereide Gerechten',
+    icon: '/images/plate.png',
+    description: 'Een uitgebreid aanbod van verse, panklare gerechten. Ideaal voor een snelle en lekkere maaltijd.',
+  },
+  {
+    title: 'Kazen',
+    icon: '/images/cheese.png',
+    description: 'Een selectie van fijne kazen, perfect als afsluiter van uw maaltijd of als onderdeel van een gezellig kaasplankje.',
+  },
+  {
+    title: 'Broodjes',
+    icon: '/images/bread.png',
+    description: 'Heerlijk vers belegde broodjes, elke dag vers bereid. Bekijk ons volledige aanbod in de broodjesfolder.',
+    link: '/broodjesfolder.pdf',
+    linkText: 'Bekijk broodjesfolder',
+  },
+  {
+    title: 'Dry Aged',
+    icon: '/images/dry_aged.png',
+    description: 'Dry aged vlees voor de echte fijnproever. Gerijpt voor een intens en diep smaakprofiel.',
+  },
+  {
+    title: 'Huisbereide Charcuterie',
+    icon: '/images/homemade.png',
+    description: 'Onze trots: huisgemaakte charcuterie bereid volgens traditionele recepten. Proef het ambachtelijke verschil.',
+  },
+];
+---
+
+<Layout
+  title="Assortiment | Slagerij Herremans Wemmel"
+  description="Bekijk het volledige assortiment van Slagerij Herremans in Wemmel: vers vlees (Belgisch Witblauw, Brasvar), bereide gerechten, kazen, broodjes, dry aged en huisbereide charcuterie."
+  currentPage="assortiment"
+>
+  <Hero
+    title="Ons Assortiment"
+    subtitle="Van vers vlees tot huisbereide charcuterie — alles ambachtelijk bereid"
+    image="/images/album/album-5.jpg"
+    compact
+  />
+
+  <section class="py-20 lg:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {categories.map(cat => (
+          <div class="group reveal bg-white border border-gray-100 p-8 hover:border-brand-red/30 hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-0.5 bg-brand-red scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+            <div class="w-14 h-14 mb-6">
+              <img src={cat.icon} alt={cat.title} class="w-full h-full object-contain" loading="lazy" />
+            </div>
+            <h2 class="text-xl font-bold text-gray-900 mb-3 tracking-tight">{cat.title}</h2>
+            <p class="text-gray-600 leading-relaxed">{cat.description}</p>
+            {cat.link && (
+              <a href={cat.link} target="_blank" class="inline-flex items-center gap-2 mt-4 text-brand-red font-medium hover:gap-3 transition-all duration-300">
+                {cat.linkText}
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </a>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative py-24 overflow-hidden">
+    <img src="/images/album/album-2.jpg" alt="" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+    <div class="absolute inset-0 bg-black/70"></div>
+    <div class="relative z-10 max-w-3xl mx-auto px-4 text-center reveal">
+      <h2 class="text-4xl font-bold text-white mb-6">Bestel gemakkelijk online</h2>
+      <p class="text-gray-300 text-lg mb-8">Bestel via onze webshop en haal uw bestelling op in de winkel.</p>
+      <a
+        href="https://webshop.slagerijherremans.be"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-3 px-8 py-4 bg-brand-red text-white font-semibold tracking-wide uppercase hover:bg-brand-red-dark transition-all duration-300 hover:scale-105"
+      >
+        Bestel Online
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<style is:global>
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  reveals.forEach(el => observer.observe(el));
+</script>
