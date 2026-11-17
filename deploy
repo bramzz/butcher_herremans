@@ -1,6 +1,0 @@
-#!/bin/sh
-cd /var/www/slagerijherremans.be/public_html
-git pull
-npm install --production
-npm run build
-echo "Deploy complete!"
