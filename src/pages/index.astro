@@ -37,6 +37,19 @@ const products = [
   { title: 'Dry Aged', image: '/images/dry_aged.png' },
   { title: 'Huisbereide Charcuterie', image: '/images/homemade.png' },
 ];
+
+// Vaste (deterministische) sneeuwvlokken voor de kerstsectie
+const snowflakes = Array.from({ length: 40 }, (_, i) => {
+  const r = (n: number) => ((Math.sin(i * 9301 + n * 49297) + 1) / 2);
+  return {
+    left: Math.round(r(1) * 100),
+    size: 2 + Math.round(r(2) * 4),
+    opacity: (0.4 + r(3) * 0.6).toFixed(2),
+    duration: Math.round(8 + r(4) * 10),
+    delay: Math.round(r(5) * 18),
+    drift: Math.round(r(6) * 60 - 30),
+  };
+});
 ---
 
 <Layout
@@ -52,6 +65,47 @@ const products = [
     ctaText="Bestel Online"
     ctaLink="https://webshop.slagerijherremans.be"
   />
+
+  <!-- Kerstfolder -->
+  <section class="kerst-section relative py-20 lg:py-28 bg-black overflow-hidden">
+    <!-- Warme rode gloed -->
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 30% 50%, rgba(185, 28, 28, 0.35), transparent 60%);"></div>
+    <!-- Vallende sneeuw -->
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+      {snowflakes.map(f => (
+        <span
+          class="snowflake"
+          style={`left:${f.left}%;width:${f.size}px;height:${f.size}px;opacity:${f.opacity};animation-duration:${f.duration}s;animation-delay:-${f.delay}s;--drift:${f.drift}px;`}
+        />
+      ))}
+    </div>
+
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div class="reveal flex justify-center">
+          <a href="/kerstfolder.pdf" target="_blank" rel="noopener" class="group relative block">
+            <span class="block w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden shadow-2xl ring-4 ring-brand-red ring-offset-4 ring-offset-black transition-transform duration-500 group-hover:scale-105">
+              <img src="/images/Kerst.jpg" alt="Kerstfolder Slagerij Herremans" class="w-full h-full object-cover" loading="lazy" />
+            </span>
+            <span class="kerst-badge absolute top-2 right-2 lg:top-4 lg:right-4 flex items-center justify-center w-20 h-20 rounded-full bg-brand-red text-white text-sm font-bold uppercase tracking-wider shadow-xl">
+              Nieuw
+            </span>
+          </a>
+        </div>
+        <div class="reveal text-center md:text-left">
+          <span class="text-brand-red font-semibold tracking-widest uppercase text-sm">&#10052; Feestdagen</span>
+          <h2 class="text-4xl lg:text-5xl font-bold text-white mt-3 mb-6 leading-tight">Onze kerstfolder</h2>
+          <p class="text-lg text-gray-300 leading-relaxed mb-8">
+            Maak van de feestdagen iets bijzonders. Ontdek ons volledige feestaanbod in onze kerstfolder.
+          </p>
+          <a href="/kerstfolder.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-7 py-3.5 bg-brand-red text-white font-semibold tracking-wide uppercase hover:bg-brand-red-dark transition-all duration-300 hover:gap-3">
+            Bekijk de kerstfolder
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Intro Section -->
   <section class="py-20 lg:py-32 bg-white">
@@ -227,6 +281,32 @@ const products = [
   .reveal.visible {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  /* Kerst */
+  .kerst-section .snowflake {
+    position: absolute;
+    top: -10px;
+    border-radius: 9999px;
+    background: #fff;
+    animation-name: snowfall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+  @keyframes snowfall {
+    to { transform: translate(var(--drift), 110vh); }
+  }
+  .kerst-badge {
+    animation: badge-swing 3s ease-in-out infinite;
+    transform-origin: top center;
+  }
+  @keyframes badge-swing {
+    0%, 100% { transform: rotate(-8deg); }
+    50% { transform: rotate(8deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .kerst-section .snowflake { display: none; }
+    .kerst-badge { animation: none; transform: rotate(-8deg); }
   }
 </style>
 

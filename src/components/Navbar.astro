@@ -11,6 +11,7 @@ const navLinks = [
   { href: '/bbq', label: 'BBQ', id: 'bbq' },
   { href: '/wiezijnwij', label: 'Wie zijn wij', id: 'wiezijnwij' },
   { href: '/contact', label: 'Contact', id: 'contact' },
+  { href: '/kerstfolder.pdf', label: 'Kerstfolder', id: 'kerstfolder', newTab: true, festive: true },
 ];
 ---
 
@@ -32,11 +33,18 @@ const navLinks = [
         {navLinks.map(link => (
           <a
             href={link.href}
+          target={link.newTab ? '_blank' : undefined}
+          rel={link.newTab ? 'noopener' : undefined}
             class:list={[
               'nav-link text-sm font-medium tracking-widest uppercase transition-all duration-300 hover:text-brand-red',
               currentPage === link.id ? 'text-brand-red' : 'text-white'
             ]}
           >
+            {link.festive && (
+              <svg class="festive-icon inline-block w-4 h-4 mr-1.5 -mt-0.5 text-brand-red" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2v20M4.93 4.93l14.14 14.14M2 12h20M4.93 19.07L19.07 4.93M9 3l3 3 3-3M9 21l3-3 3 3M3 9l3 3-3 3M21 9l-3 3 3 3" />
+              </svg>
+            )}
             {link.label}
             <span class:list={[
               'block h-0.5 bg-brand-red transition-all duration-300 mt-0.5',
@@ -77,11 +85,18 @@ const navLinks = [
       {navLinks.map(link => (
         <a
           href={link.href}
+          target={link.newTab ? '_blank' : undefined}
+          rel={link.newTab ? 'noopener' : undefined}
           class:list={[
             'block text-xl font-light tracking-wider uppercase transition-colors duration-200 hover:text-brand-red',
             currentPage === link.id ? 'text-brand-red' : 'text-white'
           ]}
         >
+          {link.festive && (
+            <svg class="festive-icon inline-block w-5 h-5 mr-2 -mt-1 text-brand-red" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2v20M4.93 4.93l14.14 14.14M2 12h20M4.93 19.07L19.07 4.93M9 3l3 3 3-3M9 21l3-3 3 3M3 9l3 3-3 3M21 9l-3 3 3 3" />
+            </svg>
+          )}
           {link.label}
         </a>
       ))}
@@ -96,6 +111,18 @@ const navLinks = [
     </div>
   </div>
 </header>
+
+<style>
+  .festive-icon {
+    animation: festive-spin 6s linear infinite, festive-twinkle 2s ease-in-out infinite;
+    transform-origin: center;
+  }
+  @keyframes festive-spin { to { transform: rotate(360deg); } }
+  @keyframes festive-twinkle { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
+  @media (prefers-reduced-motion: reduce) {
+    .festive-icon { animation: none; }
+  }
+</style>
 
 <script>
   const btn = document.getElementById('mobile-menu-btn');
